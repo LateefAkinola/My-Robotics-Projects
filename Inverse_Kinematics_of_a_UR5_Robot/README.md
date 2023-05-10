@@ -10,18 +10,16 @@ error twist V_b: 0.232, 0.171, 0.211, 0.345, 1.367, −0.222
 angular error magnitude ∣∣omega_b∣∣: 0.357
 linear error magnitude ∣∣v_b∣∣: 1.427
 
-==================================IMPORTANT==================================
+==================================IMPORTANT INFOMATION ABOUT THE FILES==================================
 
-<> The code folder (written in MATLAB) consists of two "function '.txt' " files
-that contains the codes utilized: 
-1. IKinBodyIterates.txt: Modified IKinBody function to suit the assignment 
-			 instructions 
-2. PrintIterationValues.txt: This is used in the 'IKinBodyIterates' function
-			     to print the iteration values.   
+<> These MATLAB files contains the written functions utilized: 
+1. IKinBodyIterates.m: Modified IKinBody function to suit the goal stated.
+2. PrintIterationValues.m: This is used in the 'IKinBodyIterates' function to print the iteration values.   
 
-<> The CoppeliaSim Animation.Avi is a recorded video of how the interation
-converges. The file will play in almost every media application that supports
-'.mp4' files like the VLC and Windows Media Player.
+<> The "CoppeliaSim_Animation.Avi" is a recorded video animating the Newton-Raphson iterations. The video shows CoppeliaSim playing the "iterates.csv" file
 
-<> The 'log.txt', 'Screenshot.png', and 'Iterates.csv' files are in accordance
-to the instructions
+<> The "log.txt" file shows the call of IKinBodyIterates with the initial guess, as well as all of the Newton-Raphson iterations until convergence.
+
+<> The "iterates.csv" file is created by the IKinBodyIterates function when it created the "log.txt" file.
+
+<> The "screenshot.png" showing the UR5 at the solution.  This was made with the UR5 interactive scene, and the screenshot clearly shows the UR5's end-effector configuration as well as the SE(3) configuration reported by the scene's interface, confirming that your code calculated a good solution.

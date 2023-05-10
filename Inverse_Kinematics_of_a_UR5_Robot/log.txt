@@ -1,0 +1,123 @@
+clear; clc;
+addpath('C:\Users\AKINOLA LATEEF\Documents\\MATLAB\mr');
+
+% Desired End-Effector configurations 
+Tsd = [[0 1 0 -0.5]; [0 0 -1 0.1]; [-1 0 0 0.1]; [0 0 0 1]];
+
+% Values of Constansts in meters
+W1 = 0.109; W2 = 0.082; L1 = 0.425; L2 = 0.392; H1 = 0.089; H2 = 0.095;
+
+% Matrix M of the End-effector frame
+M = [[-1 0 0 (L1+L2)]; [0 0 1 (W1+W2)]; [0 1 0 (H1-H2)]; [0 0 0 1]];
+
+% The Blist
+B1 = [0; 1; 0; (W1+W2); 0;(L1+L2)];
+B2 = [0; 0; 1; H2; (-L1-L2); 0];
+B3 = [0; 0; 1; H2; -L2; 0];
+B4 = [0; 0; 1; H2; 0; 0];
+B5 = [0; -1; 0; -W2; 0; 0];
+B6 = [0; 0; 1; 0; 0; 0];
+
+Blist = [B1 B2 B3 B4 B5 B6];
+
+%   Tolerances
+Ew = 0.001;     %   0.057degrees
+Ev = 0.0001;    %   0.1mm
+
+theta0 = [-0.1401; 2.0876; 1.8331; -1.0083; 3.2472; 1.3382]; %Intial guess
+
+[Theta, Success] = IKinBodyIterates(Blist,M,Tsd,theta0,Ew,Ev);
+disp('Theta =');
+disp(Theta);
+disp('Success?');
+if Success == 1
+    disp('Yes');
+else
+    disp('No');
+end
+
+
+%------------COMMAND WINDOW RESULTS---------------
+
+Iteration 0: 
+Joint Vector:
+   -0.1401    2.0876    1.8331   -1.0083    3.2472    1.3382
+
+SE(3) end-effector config:
+   -0.0055    0.9993   -0.0372   -0.4933
+   -0.0238   -0.0373   -0.9990    0.0973
+   -0.9997   -0.0046    0.0239    0.0894
+         0         0         0    1.0000
+
+Error twist Vb:
+   -0.0373    0.0239    0.0051   -0.0106   -0.0067   -0.0024
+
+Angular Error Magnitude: 4.456027e-02 
+ Linear Error Magnitude: 1.279601e-02 
+ 
+ 
+Iteration 1: 
+Joint Vector:
+   -0.1435    2.1651    1.7182   -0.6618    3.2813    1.6507
+
+SE(3) end-effector config:
+    0.0009    1.0000   -0.0042   -0.4988
+    0.0111   -0.0042   -0.9999    0.1002
+   -0.9999    0.0008   -0.0111    0.0955
+         0         0         0    1.0000
+
+Error twist Vb:
+   -0.0042   -0.0111   -0.0008   -0.0045   -0.0012    0.0001
+
+Angular Error Magnitude: 1.192415e-02 
+ Linear Error Magnitude: 4.656421e-03 
+ 
+ 
+Iteration 2: 
+Joint Vector:
+   -0.1427    2.1588    1.7400   -0.7589    3.2839    1.5691
+
+SE(3) end-effector config:
+   -0.0000    1.0000   -0.0005   -0.5000
+   -0.0002   -0.0005   -1.0000    0.1000
+   -1.0000   -0.0000    0.0002    0.0997
+         0         0         0    1.0000
+
+Error twist Vb:
+   1.0e-03 *
+
+   -0.4543    0.2347    0.0126   -0.3227    0.0166   -0.0211
+
+Angular Error Magnitude: 5.115070e-04 
+ Linear Error Magnitude: 3.238339e-04 
+ 
+ 
+Iteration 3: 
+Joint Vector:
+   -0.1428    2.1597    1.7396   -0.7577    3.2844    1.5708
+
+SE(3) end-effector config:
+    0.0000    1.0000   -0.0000   -0.5000
+    0.0000   -0.0000   -1.0000    0.1000
+   -1.0000    0.0000   -0.0000    0.1000
+         0         0         0    1.0000
+
+Error twist Vb:
+   1.0e-06 *
+
+   -0.1944   -0.8061   -0.0618   -0.0920   -0.1134    0.0281
+
+Angular Error Magnitude: 8.314974e-07 
+ Linear Error Magnitude: 1.486875e-07 
+ 
+ 
+Theta =
+   -0.1428
+    2.1597
+    1.7396
+   -0.7577
+    3.2844
+    1.5708
+
+Success?
+Yes
