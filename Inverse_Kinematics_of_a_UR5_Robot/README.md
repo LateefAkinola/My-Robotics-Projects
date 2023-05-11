@@ -4,13 +4,18 @@ GOAL: To write a new function, IKinBodyIterates, and to test your new function f
 This function prints out a report for each iteration of the Newton-Raphson process, for iterates 0 (the initial guess) to the final solution. Each iteration reports the iteration number i, the joint vector, the SE(3) end-effector configuration, the error twist V_b, and the angular and linear error magnitudes, ∥omega_b∥ and ∥v_b∥. For a four-joint robot, a typical iterate might look like:
 
 Iteration 3:
+
 joint vector:0.221, 0.375, 2.233, 1.414
+
 SE(3) end−effector config:[[1.000, 0.000, 0.000, 3.275], [0.000, 1.000, 0.000, 4.162], [0.000, 0.000, 1.000, −5.732], [0, 0, 0, 1]]
+
 error twist V_b: 0.232, 0.171, 0.211, 0.345, 1.367, −0.222
+
 angular error magnitude ∣∣omega_b∣∣: 0.357
+
 linear error magnitude ∣∣v_b∣∣: 1.427
 
-==================================IMPORTANT INFOMATION ABOUT THE FILES==================================
+=================IMPORTANT INFOMATION ABOUT THE FILES====================
 
 <> These MATLAB files contains the written functions utilized: 
 1. IKinBodyIterates.m: Modified IKinBody function to suit the goal stated.
